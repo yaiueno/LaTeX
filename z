@@ -1,0 +1,8 @@
+\begin{center}
+    ! " # $ % & ' ( ) = ~ |
+\end{center}
+が入力される。（ちなみにこれはverbatim 環境を利用すると、
+\begin{center}
+    ! @ # $ % ^ & * ( ) - + | ~
+\end{center}
+と異なる順に配置されている。
