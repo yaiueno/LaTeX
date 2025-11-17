@@ -1,0 +1,27 @@
+\documentclass[12pt,a4j]{jarticle}
+\title{\LaTeX の基本形}
+\author{a00919 山形 太郎}
+\date{2006 年 3 月 31 日}
+
+\begin{document}
+\begin{equation}
+    B:=\int\int_{[0,\infty)^2}
+    e^{-(x^2+y^2)}\,dxdy\label{eq:xyint}
+\end{equation}
+式(\ref{eq:xyint})に極座標変換$x=r\cos\theta$, $y=r\sin\theta$を代入すると、
+\begin{eqnarray}
+    B & = & \int_{r=0}^{\infty}
+    \int_{\theta=0}^{\frac{\pi}{2}}
+    e^{-r^2}r\,drd\theta \nonumber  \\
+    & = & \frac{\pi}{2}\int_{0}^\infty
+    e^{-r^2}r\,dr\label{eq:rint}
+\end{eqnarray}  
+となる。式(\ref{eq:rint})の計算結果は
+\[
+    B = \frac{\pi}{2}\int_{0}^{\infty}e^{-r^{2}}rdr =\frac{\pi}{4}
+\]
+であり,A=$\sqrt{B}$が満たされるので
+\[
+    \frac{\sqrt{\pi}}{2}
+\]
+\end{document}
