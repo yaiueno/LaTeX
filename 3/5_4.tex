@@ -1,12 +1,9 @@
-\begin{center}
-    ! " # $ % & ' ( ) = ~ |
-\end{center}
-が入力される。（ちなみにこれはverbatim 環境を利用すると、
-\begin{center}
-    ! @ # $ % ^ & * ( ) - + | ~
-\end{center}
-と異なる順に配置されている。
+\documentclass[12pt,a4j]{jarticle}
+\title{\LaTeX の基本形}
+\author{a00919 山形 太郎}
+\date{2006 年 3 月 31 日}
 
+\begin{document}
 $n$ 個の$n$変数関数
 \[
     \left\{\begin{array}{c}
@@ -25,10 +22,11 @@ $n$ 個の$n$変数関数
                 \ldots &
                 \frac{\partial f_1}{\partial x_n} \\
                 \vdots& \vdots & \ddots & \vdots \\
-                \frac{partial f_n}{\partial x_1} &
-                \frac{partial f_n}{\partial x_2} &
+                \frac{\partial f_n}{\partial x_1} &
+                \frac{\partial f_n}{\partial x_2} &
                 \ldots &
-                \frac{\partial f_n}{partial x_n}
+                \frac{\partial f_n}{\partial x_n}
             \end{array}
             \right)
             \]
+\end{document}
