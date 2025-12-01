@@ -1,44 +1,56 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex 2020.2.13)  17 NOV 2025 15:47
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.sjis) (TeX Live 2025) (preloaded format=platex 2025.11.27)  27 NOV 2025 20:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **8_2
 (./8_2.tex
-pLaTeX2e <2017/10/28>+4 (based on LaTeX2e <2017-04-15>)
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
-(/usr/share/texlive/texmf-dist/tex/platex/base/jarticle.cls
-Document Class: jarticle 2017/09/19 v1.7g Standard pLaTeX class
-\c@@paper=\count82
-(/usr/share/texlive/texmf-dist/tex/platex/base/jsize12.clo
-File: jsize12.clo 2017/09/19 v1.7g Standard pLaTeX file (size option)
+pLaTeX2e <2023-02-14>+1, based on
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+(c:/texlive/2025/texmf-dist/tex/platex/base/jarticle.cls
+Document Class: jarticle 2020/09/30 v1.8f Standard pLaTeX class
+\c@@paper=\count195
+(c:/texlive/2025/texmf-dist/tex/platex/base/jsize12.clo
+File: jsize12.clo 2020/09/30 v1.8f Standard pLaTeX file (size option)
 )
-\c@part=\count83
-\c@section=\count84
-\c@subsection=\count85
-\c@subsubsection=\count86
-\c@paragraph=\count87
-\c@subparagraph=\count88
-\c@figure=\count89
-\c@table=\count90
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
+\c@part=\count196
+\c@section=\count197
+\c@subsection=\count198
+\c@subsubsection=\count199
+\c@paragraph=\count266
+\c@subparagraph=\count267
+\c@figure=\count268
+\c@table=\count269
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
 \symmincho=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
-(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 613.
-\toclineskip=\dimen118
-\@lnumwidth=\dimen119
-\bibindent=\dimen120
-\heisei=\count91
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 615.
+\toclineskip=\dimen157
+\@lnumwidth=\dimen158
+\bibindent=\dimen159
+\heisei=\count270
+)
+(c:/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
+File: l3backend-dvips.def 2024-05-08 L3 backend support: dvips
+\l__pdf_internal_box=\box69
+\l__pdf_backend_content_box=\box70
+\l__pdf_backend_model_box=\box71
+\g__pdf_backend_annotation_int=\count271
+\g__pdf_backend_link_int=\count272
+\g__pdf_backend_link_sf_int=\count273
 ) (./8_2.aux)
 \openout1 = `8_2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
 LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
@@ -55,16 +67,27 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 7.
 
+
 [1
 
-] (./8_2.aux) ) 
-Here is how much of TeX's memory you used:
- 279 strings out of 493640
- 2820 string characters out of 6150528
- 60954 words of memory out of 5000000
- 3955 multiletter control sequences out of 15000+600000
- 10795 words of font info for 42 fonts, out of 8000000 for 9000
- 929 hyphenation exceptions out of 8191
- 22i,7n,19p,131b,158s stack positions out of 5000i,500n,10000p,200000b,80000s
+] (./8_2.aux)
+ ***********
+pLaTeX2e <2023-02-14>+1, based on
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+ ***********
 
-Output written on 8_2.dvi (1 page, 1664 bytes).
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 517 strings out of 473836
+ 9209 string characters out of 5734521
+ 403305 words of memory out of 5000000
+ 23845 multiletter control sequences out of 15000+600000
+ 565992 words of font info for 64 fonts, out of 8000000 for 9000
+ 929 hyphenation exceptions out of 8191
+ 35i,7n,50p,152b,172s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on 8_2.dvi (1 page, 1696 bytes).

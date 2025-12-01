@@ -1,10 +1,40 @@
 \documentclass[12pt,a4j]{jarticle}
-\title{\LaTeX の基本形}
-\author{a00919 山形 太郎}
-\date{2006 年 3 月 31 日}
+
+\usepackage[dvipdfmx]{graphicx}
 
 \begin{document}
 $ z = x +yi $を複素数とする。領域$D$は次の不等式:
 \[
-    D = {z = x + yi| abs}
+    D = \{z = x + yi||z| \le 1,|z-1| \ge 1,|z+1| \ge 1,y > 0\}
+\]
+で定義されているとする。この時$D$の頂点を求めたい。
+$|z|= \sqrt{x^{2}+y^{2}}$なので、$D$の境界は
+\begin{eqnarray}
+    x^{2}+y^{2} &=&1 \label{eq:xyintA}\\
+    (x-1)^{2}+y^{2}&=&1\label{eq:xyintB}\\
+    (x+1)^{2}+y^{2}&=&1\label{eq:xyintC}
+\end{eqnarray}
+で与えられる。(\ref{eq:xyintA})から(\ref{eq:xyintB})を引くことにより、
+\[
+    2x+1=0
+\]
+を得る。すなわち$x=\frac{1}{2}$となる。これを(\ref{eq:xyintA})に代入すると
+\[
+    (\frac{1}{2})^{2}+y^{2}=\frac{1}{4}+y^{2}=1
+\]
+すなわち$y^{2}=\frac{3}{4}$となる。$y>0$なので、$y=\frac{\sqrt{3}}{2}$を得る。同様に、(\ref{eq:xyintA})から(\ref{eq:xyintC})を引くことにより、
+\[
+    2x+1=0
+\]
+を得る。すなわち$x=-\frac{1}{2}$となる。これを(\ref{eq:xyintA})に代入して$\left(x,y\right)=\left(-\frac{1}{2},\frac{\sqrt{2}}{2}\right)$を得る。同様に、(\ref{eq:xyintB})から(\ref{eq:xyintC})を引くことにより、
+\[
+    4x=0
+\]
+を得る。これを(\ref{eq:xyintB})に代入することにより、$(x,y)=(0,0)$となる。
+ 以上により、図１で与えられる$D$の各頂点は$x=0,\frac{1}{2}+\frac{\sqrt{3}}{2}i,-\frac{1}{2}+\frac{\sqrt{3}}{2}i$の三点で与えられる。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6cm]{./pic.png}
+    \caption{Dの領域}
+\end{figure}
 \end{document}

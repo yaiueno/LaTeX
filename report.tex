@@ -1,0 +1,761 @@
+\documentclass[10pt,a4j]{jarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amssymb, amsmath}
+\usepackage{cite}
+\usepackage{url}
+
+\title{{\Huge 情報科学演習レポート}}
+\author{\empty}
+\date{\empty}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+  \vspace{115mm}
+  \begin{description}
+  	\item \Large 実験課題名 \quad \underline{\LaTeX 実習課題}
+	\item \Large 実験実施日 \quad \underline{２０２５年９月２８日，１１月３０日}
+	\item \Large レポート提出日 \quad \underline{２０２５年１２月１日}
+%	\item \Large レポート再提出日 \quad \underline{２０２４年＊＊月＊＊日}
+	\item \Large 学生番号 \quad \underline{２４５１６２７０}
+	\item \Large 報告書提出者 \quad \underline{上野能登}
+  \end{description}
+\end{center}
+
+\thispagestyle{empty}
+\clearpage
+\addtocounter{page}{-1}
+
+\newpage
+\section{目的}
+本演習の目的は\TeX のマクロパッケージである\LaTeX の仕組みと操作を演習課題を通して理解し,将来の卒業論文やレポート作成に活用できるスキルを身につけることである.
+
+\section{実験装置・環境}
+本演習でコンパイルに使用した環境は以下の通りである.ただし,\LaTeX ソースコードの執筆にはほかのコンピュータも使用した.
+
+コンピュータ環境の構成を\textbf{表\ref{tab:hardware_config}}に,ソフトウェア環境の構成を\textbf{表\ref{tab:software_config}}に示す.
+
+% --- ハードウェア構成表 ---
+\begin{table}[htbp]
+    \caption{本演習におけるハードウェア環境構成}
+    \label{tab:hardware_config}
+    \centering
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{項目} & \textbf{詳細} \\
+        \hline
+        \hline
+        OS & Microsoft Windows 11 Home (64-bit) \\
+        \hline
+        CPU & AMD Ryzen 7 8845HS \\
+        \hline
+        GPU (単体) & NVIDIA GeForce RTX 4060 Laptop GPU \\
+        \hline
+        システムモデル & ASUS TUF Gaming A14 FA401UV\_FA401UV \\
+        \hline
+        物理メモリ (RAM) & 32 GB \\
+        \hline
+    \end{tabular}
+\end{table}
+
+% --- ソフトウェア構成表 ---
+\begin{table}[htb]
+    \caption{本演習におけるソフトウェア環境構成}
+    \label{tab:software_config}
+    \centering
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{項目} & \textbf{詳細} \\
+        \hline
+        \hline
+        TeX ディストリビューション & \textbf{TeX Live 2025} \\
+        \hline
+        コンパイラ & \textbf{pLaTeX} (e-upTeX 3.141592653-p4.1.2-u2.00-250202-2.6) \\
+        \hline
+        TeX Live 2025 インストール元(参考) & 山形大学サーバー内のミラー \\
+        \hline
+        画像生成言語 & \textbf{Python 3.13.9} (Windows App Store 版) \\
+        \hline
+        主要ライブラリ (NumPy) & \textbf{2.1.3} \\
+        \hline
+        主要ライブラリ (Matplotlib) & \textbf{3.10.0} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\section{方法}
+\subsection{実習 4.1}
+各記号の出力を確認するため4\_1.texに以下のコード：\\
+\verb|--------------------|\\
+
+\begin{verbatim*}
+\documentclass[12pt,a4j]{jarticle}
+
+\begin{document}
+109 キーボードの第一列には数字が並んでいるが, shift キーを押しながらでは,順に,
+\begin{center}
+    ! " \# \$ \% \& ' ( ) = \textasciitilde \textbar
+\end{center}
+が入力される.（ちなみにこれはverbatim 環境を利用すると,
+\begin{verbatim}
+    ! " # $ % & ' ( ) = ~ |
+\end{verbatim}
+という表示になる.)これが,101キーボードでは,
+\begin{center}
+    ! @ \# \$ \% \textasciicircum \& * ( ) - + \textbar \textasciitilde
+\end{center}
+と異なる順に配置されている.
+\end{document}
+\end{verbatim*}
+\verb|--------------------|\\
+を入力した．その後，4\_1.texをコンパイルし，その結果を画面上に表示させ,意図した結果が得られるか確認した.
+
+\subsection{実習 4.2}
+verbatim環境や各箇条書きの環境,表組み環境の挙動の確認のため4\_2.texに以下のコード：\\
+\verb|--------------------|\\
+
+\begin{verbatim*}
+\documentclass[12pt,a4j]{jarticle}
+
+
+\begin{document}
+\section{実習4.2}
+\subsection{3.5打ち込んだ通りに出力する}
+\begin{verbatim}
+    #include <stdio.h>
+    int main()
+    {
+        int i=2;
+            printf("%d %d\n", i, i*i);
+        return 0;
+    }
+    \end{verbatim}
+    ここで,\verb|#include| はプリプロセッサへの命令で... また,\verb+%d+で整数型の変数を表す.    
+\subsection{3.6箇条書き}
+上杉家の名君として次の二人が有名.
+\begin{description}
+    \item[上杉謙信] 1530 -- 1578 没.米沢上杉家の藩祖.名将と謳われる.
+    \item[上杉鷹山] 1751 -- 1822 没.第９代米沢藩主.中興の名君.
+\end{description}
+
+The latest CD by ''PUR'' consists of 4 songs with the title:
+\begin{enumerate}
+    \item Ouvert \"ure
+    \item Hold me tight
+    \item If you hear this Tango
+    \item Adventure land.
+\end{enumerate} 
+
+山形大学米沢キャンパス組織図:
+\begin{itemize}
+    \item 工学部(6学科)
+    \begin{itemize}
+        \item 情報・エレクトロニクス学科
+        \item システム創成工学科
+        \item (他４学科略)
+    \end{itemize}
+    \item 大学院理工学研究科（６専攻）
+    \begin{itemize}
+        \item 数理情報システム専攻
+        \item 情報・エレクトロニクス専攻
+        \item (他４専攻略)
+    \end{itemize}
+\end{itemize}
+
+\subsection{3.7中央寄せとスペーシング}
+強調のため,ある単語または文を中心に置くには
+\begin{center}
+    center 環境
+\end{center}
+を用いる.
+
+\subsection{3.8表組み}
+\begin{center}
+    \begin{tabular}{r|lc}
+        \hline
+        国名 & 首都 & 通貨 \\
+        \hline
+        日本 & 東京 & 円 \\
+        イギリス & ロンドン & ポンド\\
+        アルゼンチン & ブエノスアイレス & ペソ\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\begin{table}[h]
+    \caption{各国の首都と通貨}
+    \begin{center}
+        \begin{tabular}{r|lc}
+        \hline
+        国名 & 首都 & 通貨 \\
+        \hline
+        日本 & 東京 & 円 \\
+        イギリス & ロンドン & ポンド\\
+        アルゼンチン & ブエノスアイレス & ペソ\\
+        \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\end{document}
+\end{verbatim*}
+\verb|--------------------|\\
+を入力した．その後，4\_2.texをコンパイルし，その結果を画面上に表示させ,意図した結果が得られるか確認した.
+
+
+\subsection{実習 4.3(a)}
+description環境を用いた箇条書きの挙動を調べるため,4\_3\_1.texに以下のコード：\\
+\verb|--------------------|\\
+
+\begin{verbatim*}
+\documentclass[12pt,a4j]{jarticle}
+
+\begin{document}
+\begin{description}
+    \item[cat] ( \textit{pl} .cats)
+    \begin{enumerate}
+    \item \textbf{A cat} is a small, furry animal with a tail,
+    whiskers, and sharp claws.
+    Cats are often kept as pets.
+    \item \textbf{Cats} are lions, tigers, and other wild animals
+    in the same family.
+    \item \textit{See also} \textbf{Cheshire cat, fatcat, wildcat.}
+    \end{enumerate}
+\end{description}
+\end{document}
+\end{verbatim*}
+\verb|--------------------|\\
+を入力した．その後，4\_3\_1.texをコンパイルし，その結果を画面上に表示させ,意図した結果が得られるか確認した.
+
+
+\subsection{実習 4.3(b)}
+verbatim環境を用いて4.3(a)の\TeX ソースコードをそのまま出力するため4\_3\_2.texに以下のコード：\\
+\verb|--------------------|\\
+
+\begin{verbatim*}
+\documentclass[12pt,a4j]{jarticle}
+
+
+\begin{document}
+\begin{verbatim}
+\documentclass[12pt,a4j]{jarticle}
+
+
+\begin{document}
+\begin{description}
+    \item[cat] ( \textit{pl} .cats)
+    \begin{enumerate}
+    \item \textbf{A cat} is a small, furry animal with a tail, whiskers, and sharp 
+    claws. Cats are often kept as pets.
+    \item \textbf{Cats} are lions, tigers, and other wild animals in  the 
+    same family.
+    \item \textit{See also} \textbf{Cheshire cat, fatcat, wildcat.}
+    \end{enumerate}
+\end{description}
+\end{document}
+\end{verbatim}
+\end{document}
+\end{verbatim*}
+\verb|--------------------|\\
+を入力した．その後，4\_3\_2.texをコンパイルし，その結果を画面上に表示させ,意図した結果が得られることを確認した.
+
+
+
+\subsection{実習 8.1}
+表の中に数式を出力した際の挙動を確認するため,8\_1.texに以下のコード：\\
+\verb|--------------------|\\
+
+\begin{verbatim*}
+\documentclass[12pt,a4j]{jarticle}
+
+\begin{document}
+\begin{table}
+    \caption{増減表}
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c|c}
+            \hline
+            $x$ & ... &  $\frac{\beta+1-\sqrt{\beta^{2}-\beta+1}}{3}$
+             & ... & $\frac{\beta+1+\sqrt{\beta^{2}-\beta+1}}{3}$ & \dots\\
+            \hline
+            $f'(x)$ & + & 0 & - & 0 & +\\
+            \hline
+            $f(x)$ & $\nearrow$ & 極大値 & $\searrow$ & 極小値 & $\nearrow$\\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}   
+\end{document}
+\end{verbatim*}
+\verb|--------------------|\\
+を入力した．その後，8\_1.texをコンパイルし，その結果を画面上に表示させ,意図した結果が得られるか確認した.
+
+
+\subsection{実習 8.2}
+各数式環境の挙動を確認するため,8\_2.texに以下のコード：\\
+\verb|--------------------|\\
+
+\begin{verbatim*}
+\documentclass[12pt,a4j]{jarticle}
+
+\begin{document}
+\begin{equation}
+    B:=\int\int_{[0,\infty)^2}
+    e^{-(x^2+y^2)}\,dxdy\label{eq:xyint}
+\end{equation}
+式(\ref{eq:xyint})に極座標変換$x=r\cos\theta$, $y=r\sin\theta$を代入すると,
+\begin{eqnarray}
+    B & = & \int_{r=0}^{\infty}
+    \int_{\theta=0}^{\frac{\pi}{2}}
+    e^{-r^2}r\,drd\theta \nonumber  \\
+    & = & \frac{\pi}{2}\int_{0}^\infty
+    e^{-r^2}r\,dr\label{eq:rint}
+\end{eqnarray}  
+となる.式(\ref{eq:rint})の計算結果は
+\[
+    B = \frac{\pi}{2}\int_{0}^{\infty}e^{-r^{2}}rdr =\frac{\pi}{4}
+\]
+であり,A=$\sqrt{B}$が満たされるので
+\[
+    \frac{\sqrt{\pi}}{2}
+\]
+\end{document}
+\end{verbatim*}
+\verb|--------------------|\\
+を入力した．その後，8\_2.texをコンパイルし，その結果を画面上に表示させ,意図した結果が得られるか確認した.
+
+
+\subsection{実習 8.3}
+行列を表示させる際の挙動を確認するため,8\_3.texに以下のコード：\\
+\verb|--------------------|\\
+
+\begin{verbatim*}
+\documentclass[12pt,a4j]{jarticle}
+
+\begin{document}
+\[
+    \left(
+        \begin{array}{ccc}
+            \cos \theta \cos \zeta & -r \sin \theta \cos \zeta
+             & -r \cos \theta \sin \zeta \\
+            \cos \theta \sin \zeta & -r \sin \theta \sin \zeta
+             & r \cos \theta \cos \zeta \\
+            \sin \theta & r \cos \theta & 0 \\
+        \end{array}
+    \right)
+\]
+\end{document}
+\end{verbatim*}
+\verb|--------------------|\\
+を入力した．その後，8\_3.texをコンパイルし，その結果を画面上に表示させ,意図した結果が得られるか確認した.
+
+
+\subsection{実習 8.4}
+複雑な数式や表を含んだ場合の\TeX ソースコードと出力結果の関係を調べるため8\_4.texに以下のコード：\\
+\verb|--------------------|\\
+
+\begin{verbatim*}
+\documentclass[12pt,a4j]{jarticle}
+\usepackage[dvipdfmx]{graphicx}
+
+\begin{document}
+$ z = x +yi $を複素数とする.領域$D$は次の不等式:
+\[
+    D = \{z = x + yi||z| \le 1,|z-1| \ge 1,
+    |z+1| \ge 1,y > 0\}
+\]
+で定義されているとする.この時$D$の頂点を求めたい.
+$|z|= \sqrt{x^{2}+y^{2}}$なので,$D$の境界は
+\begin{eqnarray}
+    x^{2}+y^{2} &=&1 \label{eq:xyintA}\\
+    (x-1)^{2}+y^{2}&=&1\label{eq:xyintB}\\
+    (x+1)^{2}+y^{2}&=&1\label{eq:xyintC}
+\end{eqnarray}
+で与えられる.(\ref{eq:xyintA})から(\ref{eq:xyintB})を引くことにより,
+\[
+    2x+1=0
+\]
+を得る.すなわち$x=\frac{1}{2}$となる.
+これを(\ref{eq:xyintA})に代入すると
+\[
+    (\frac{1}{2})^{2}+y^{2}=\frac{1}{4}+y^{2}=1
+\]
+すなわち$y^{2}=\frac{3}{4}$となる.$y>0$なので,
+$y=\frac{\sqrt{3}}{2}$を得る.同様に,(\ref{eq:xyintA})から
+(\ref{eq:xyintC})を引くことにより,
+\[
+    2x+1=0
+\]
+を得る.すなわち$x=-\frac{1}{2}$となる.
+これを(\ref{eq:xyintA})に代入して
+$\left(x,y\right)=\left(-\frac{1}{2},\frac{\sqrt{2}}{2}\right)$を得る.
+同様に,(\ref{eq:xyintB})から(\ref{eq:xyintC})を引くことにより,
+\[
+    4x=0
+\]
+を得る.これを(\ref{eq:xyintB})に代入することにより,
+$(x,y)=(0,0)$となる.
+以上により,図１で与えられる$D$の各頂点は
+$x=0,\frac{1}{2}+\frac{\sqrt{3}}{2}i,
+-\frac{1}{2}+\frac{\sqrt{3}}{2}i$の三点で与えられる.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6cm]{./pic.png}
+    \caption{Dの領域}
+\end{figure}
+\end{document}
+\end{verbatim*}
+\verb|--------------------|\\
+を入力した．その後，8\_4.texをコンパイルし，その結果を画面上に表示させ,意図した結果が得られるか確認した.
+ただし,画像はcircle.pyに以下のコード：\\
+\verb|--------------------|\\
+
+\begin{verbatim*}
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+import numpy as np
+
+# 図のセットアップ
+fig, ax = plt.subplots(figsize=(6, 5))
+
+# 1. 3つの円を描画
+# 円の方程式: x^2+y^2=1, (x-1)^2+y^2=1, (x+1)^2+y^2=1
+circle_center = patches.Circle((0, 0), 1, linewidth=1,
+                               edgecolor='black',
+                               facecolor='none', zorder=2)
+circle_right = patches.Circle((1, 0), 1, linewidth=1,
+                              edgecolor='black',
+                              facecolor='none', zorder=2)
+circle_left = patches.Circle((-1, 0), 1, linewidth=1,
+                             edgecolor='black',
+                             facecolor='none', zorder=2)
+
+ax.add_patch(circle_center)
+ax.add_patch(circle_right)
+ax.add_patch(circle_left)
+
+# 2. 領域D（黒い部分）の塗りつぶし
+# 3つの円の交点により x = -0.5 から 0.5 まで
+x = np.linspace(-0.5, 0.5, 500)
+
+# 上側の境界: 中央の円
+y_upper = np.sqrt(1 - x**2)
+
+# 下側の境界:
+# x < 0: 左の円の上側, x >= 0: 右の円の上側
+y_lower = np.where(x < 0, np.sqrt(1 - (x + 1)**2),
+                   np.sqrt(1 - (x - 1)**2))
+
+ax.fill_between(x, y_lower, y_upper, color='black', zorder=1)
+
+# 3. 破線の描画 (x = -0.5, x = 0.5 の位置)
+y_intersect = np.sqrt(0.75)
+ax.vlines(x=[-0.5, 0.5], ymin=0, ymax=y_intersect,
+          colors='black', linestyles='dashed',
+          linewidth=1, zorder=2)
+
+# 4. 軸と目盛りの設定
+ax.spines['left'].set_position('zero')
+ax.spines['bottom'].set_position('zero')
+ax.spines['right'].set_color('none')
+ax.spines['top'].set_color('none')
+
+ax.set_xlim(-2.5, 2.5)
+ax.set_ylim(-1.5, 1.8)
+
+xticks = [-2, -1, 1, 2]
+yticks = [-1, 1]
+ax.set_xticks(xticks)
+ax.set_yticks(yticks)
+ax.set_xticklabels(xticks, fontsize=12)
+ax.set_yticklabels(yticks, fontsize=12)
+
+ax.tick_params(direction='inout', length=6, width=1,
+               colors='black')
+
+ax.text(-0.2, -0.2, "0", fontsize=12,
+        ha='center', va='center')
+ax.text(2.6, 0, "x", fontsize=14, ha='left', va='center')
+ax.text(0, 1.9, "y", fontsize=14, ha='center', va='bottom')
+
+ax.set_aspect('equal')
+
+# 5. 軸の矢印を描画
+ax.plot(1, 0, ">k", transform=ax.get_yaxis_transform(),
+        clip_on=False)
+ax.plot(0, 1, "^k", transform=ax.get_xaxis_transform(),
+        clip_on=False)
+
+plt.tight_layout()
+
+# 画像保存 
+fig.savefig('pic.png',
+            bbox_inches='tight', dpi=300)
+\end{verbatim*}
+\verb|--------------------|\\
+を入力し,その後，インタプリタで実行し作成したものを使う．
+
+\section{演習結果}
+\subsection{実習4.1}
+「方法」で説明した実習4.1のソースコードをコンパイルすると，画面上に以下のように表示された．\\
+\verb|--------------------|\\
+109 キーボードの第一列には数字が並んでいるが, shift キーを押しながらでは,順に,
+\begin{center}
+    ! " \# \$ \% \& ' ( ) = \textasciitilde \textbar
+\end{center}
+が入力される.（ちなみにこれはverbatim 環境を利用すると,
+\begin{verbatim}
+    ! " # $ % & ' ( ) = ~ |
+\end{verbatim}
+という表示になる.)これが,101キーボードでは,
+\begin{center}
+    ! @ \# \$ \% \textasciicircum \& * ( ) - + \textbar \textasciitilde
+\end{center}
+と異なる順に配置されている.
+\verb|--------------------|\\
+\# \$ \% \&など記号が\TeX でもつ特別な意味ではなく,そのまま出力された.
+\subsection{実習 4.2}
+「方法」で説明した実習4.2のソースコードをコンパイルすると，画面上に以下のように表示された．\\
+\verb|--------------------|\\
+\subsection*{3.5打ち込んだ通りに出力する}
+\begin{verbatim}
+    #include <stdio.h>
+    int main()
+    {
+        int i=2;
+            printf("%d %d\n", i, i*i);
+        return 0;
+    }
+    \end{verbatim}
+    ここで,\verb|#include| はプリプロセッサへの命令で... また,\verb+%d+で整数型の変数を表す.    
+\subsection*{3.6箇条書き}
+上杉家の名君として次の二人が有名.
+\begin{description}
+    \item[上杉謙信] 1530 -- 1578 没.米沢上杉家の藩祖.名将と謳われる.
+    \item[上杉鷹山] 1751 -- 1822 没.第９代米沢藩主.中興の名君.
+\end{description}
+
+The latest CD by ''PUR'' consists of 4 songs with the title:
+\begin{enumerate}
+    \item Ouvert \"ure
+    \item Hold me tight
+    \item If you hear this Tango
+    \item Adventure land.
+\end{enumerate} 
+
+山形大学米沢キャンパス組織図:
+\begin{itemize}
+    \item 工学部(6学科)
+    \begin{itemize}
+        \item 情報・エレクトロニクス学科
+        \item システム創成工学科
+        \item (他４学科略)
+    \end{itemize}
+    \item 大学院理工学研究科（６専攻）
+    \begin{itemize}
+        \item 数理情報システム専攻
+        \item 情報・エレクトロニクス専攻
+        \item (他４専攻略)
+    \end{itemize}
+\end{itemize}
+
+\subsection*{3.7中央寄せとスペーシング}
+強調のため,ある単語または文を中心に置くには
+\begin{center}
+    center 環境
+\end{center}
+を用いる.
+
+\subsection*{3.8表組み}
+\begin{center}
+    \begin{tabular}{r|lc}
+        \hline
+        国名 & 首都 & 通貨 \\
+        \hline
+        日本 & 東京 & 円 \\
+        イギリス & ロンドン & ポンド\\
+        アルゼンチン & ブエノスアイレス & ペソ\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\begin{table}[h]
+    \caption{各国の首都と通貨}
+    \begin{center}
+        \begin{tabular}{r|lc}
+        \hline
+        国名 & 首都 & 通貨 \\
+        \hline
+        日本 & 東京 & 円 \\
+        イギリス & ロンドン & ポンド\\
+        アルゼンチン & ブエノスアイレス & ペソ\\
+        \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+\verb|--------------------|\\
+verbatim環境では内部に入力したCのソースコードがそのまま出力された.また,description環境を使うことで箇条書きと各項目の説明として出力された.
+enumerate環境や itemize環境でも箇条書きが出力された.tabular,table環境では表が出力され,table環境では表番号とキャプションも出力された.
+\subsection{実習 4.3(a)}
+「方法」で説明した実習4.3(a)のソースコードをコンパイルすると，画面上に以下のように表示された．\\
+\verb|--------------------|\\
+\begin{description}
+    \item[cat] ( \textit{pl} .cats)
+    \begin{enumerate}
+    \item \textbf{A cat} is a small, furry animal with a tail,
+    whiskers, and sharp claws.
+    Cats are often kept as pets.
+    \item \textbf{Cats} are lions, tigers, and other wild animals
+    in the same family.
+    \item \textit{See also} \textbf{Cheshire cat, fatcat, wildcat.}
+    \end{enumerate}
+\end{description}
+\verb|--------------------|\\
+description環境によって各項目が箇条書きの形で出力され,\verb|\textbf|を用いることで太字に,\verb|\textit|を用いることで斜体として出力された.
+\subsection{実習 4.3(b)}
+「方法」で説明した実習4.3(b)のソースコードをコンパイルすると，画面上に以下のように表示された．\\
+\verb|--------------------|\\
+\begin{verbatim}
+\documentclass[12pt,a4j]{jarticle}
+
+
+\begin{document}
+\begin{description}
+    \item[cat] ( \textit{pl} .cats)
+    \begin{enumerate}
+    \item \textbf{A cat} is a small, furry animal with a tail, whiskers, and sharp 
+    claws. Cats are often kept as pets.
+    \item \textbf{Cats} are lions, tigers, and other wild animals in  the 
+    same family.
+    \item \textit{See also} \textbf{Cheshire cat, fatcat, wildcat.}
+    \end{enumerate}
+\end{description}
+\end{document}
+\end{verbatim}
+\verb|--------------------|\\
+verbatim環境を用いることで,4.3(a)を出力するための\TeX コードがそのまま出力された.
+\subsection{実習 8.1}
+「方法」で説明した実習8.1のソースコードをコンパイルすると，画面上に以下のように表示された．\\
+\verb|--------------------|\\
+
+\begin{table}[h!]
+    \caption{増減表} 
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c|c}
+            \hline
+            $x$ & $\cdots$ & $\frac{\beta+1-\sqrt{\beta^{2}-\beta+1}}{3}$ & $\cdots$ & $\frac{\beta+1+\sqrt{\beta^{2}-\beta+1}}{3}$ & $\cdots$\\
+            \hline
+            $f'(x)$ & + & 0 & - & 0 & +\\
+            \hline
+            $f(x)$ & $\nearrow$ & 極大値 & $\searrow$ & 極小値 & $\nearrow$\\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\verb|--------------------|\\
+表示結果より,tabular環境と\verb|$$|を組合わせることで表内に数式が出力されることを確認した.
+\subsection{実習 8.2}
+「方法」で説明した実習8.2のソースコードをコンパイルすると，画面上に以下のように表示された．\\
+\verb|--------------------|\\
+\begin{equation}
+    B:=\int\int_{[0,\infty)^2}
+    e^{-(x^2+y^2)}\,dxdy\label{eq:xyint}
+\end{equation}
+式(\ref{eq:xyint})に極座標変換$x=r\cos\theta$, $y=r\sin\theta$を代入すると,
+\begin{eqnarray}
+    B & = & \int_{r=0}^{\infty}
+    \int_{\theta=0}^{\frac{\pi}{2}}
+    e^{-r^2}r\,drd\theta \nonumber  \\
+    & = & \frac{\pi}{2}\int_{0}^\infty
+    e^{-r^2}r\,dr\label{eq:rint}
+\end{eqnarray}  
+となる.式(\ref{eq:rint})の計算結果は
+\[
+    B = \frac{\pi}{2}\int_{0}^{\infty}e^{-r^{2}}rdr =\frac{\pi}{4}
+\]
+であり,A=$\sqrt{B}$が満たされるので
+\[
+    \frac{\sqrt{\pi}}{2}
+\]
+\verb|--------------------|\\
+\verb|\[|を用いた数式環境では数式が出力され,さらにeqnarray環境,equation環境では数式の番号が出力された.
+\subsection{実習 8.3}
+「方法」で説明した実習8.3のソースコードをコンパイルすると，画面上に以下のように表示された．\\
+\verb|--------------------|\\
+\[
+    \left(
+        \begin{array}{ccc}
+            \cos \theta \cos \zeta & -r \sin \theta \cos \zeta
+             & -r \cos \theta \sin \zeta \\
+            \cos \theta \sin \zeta & -r \sin \theta \sin \zeta
+             & r \cos \theta \cos \zeta \\
+            \sin \theta & r \cos \theta & 0 \\
+        \end{array}
+    \right)
+\]
+\verb|--------------------|\\
+表示結果より,array環境と伸縮するかっこを組合わせることで行列が出力されることを確認した.
+\subsection{実習 8.4}
+「方法」で説明した実習8.4のソースコードをコンパイルすると，画面上に以下のように表示された．\\
+\verb|--------------------|\\
+$ z = x +yi $を複素数とする.領域$D$は次の不等式:
+\[
+    D = \{z = x + yi||z| \le 1,|z-1| \ge 1,
+    |z+1| \ge 1,y > 0\}
+\]
+で定義されているとする.この時$D$の頂点を求めたい.
+$|z|= \sqrt{x^{2}+y^{2}}$なので,$D$の境界は
+\begin{eqnarray}
+    x^{2}+y^{2} &=&1 \label{eq:xyintA}\\
+    (x-1)^{2}+y^{2}&=&1\label{eq:xyintB}\\
+    (x+1)^{2}+y^{2}&=&1\label{eq:xyintC}
+\end{eqnarray}
+で与えられる.(\ref{eq:xyintA})から(\ref{eq:xyintB})を引くことにより,
+\[
+    2x+1=0
+\]
+を得る.すなわち$x=\frac{1}{2}$となる.
+これを(\ref{eq:xyintA})に代入すると
+\[
+    (\frac{1}{2})^{2}+y^{2}=\frac{1}{4}+y^{2}=1
+\]
+すなわち$y^{2}=\frac{3}{4}$となる.$y>0$なので,
+$y=\frac{\sqrt{3}}{2}$を得る.同様に,(\ref{eq:xyintA})から
+(\ref{eq:xyintC})を引くことにより,
+\[
+    2x+1=0
+\]
+を得る.すなわち$x=-\frac{1}{2}$となる.
+これを(\ref{eq:xyintA})に代入して
+$\left(x,y\right)=\left(-\frac{1}{2},\frac{\sqrt{2}}{2}\right)$を得る.
+同様に,(\ref{eq:xyintB})から(\ref{eq:xyintC})を引くことにより,
+\[
+    4x=0
+\]
+を得る.これを(\ref{eq:xyintB})に代入することにより,
+$(x,y)=(0,0)$となる.
+以上により,図１で与えられる$D$の各頂点は
+$x=0,\frac{1}{2}+\frac{\sqrt{3}}{2}i,
+-\frac{1}{2}+\frac{\sqrt{3}}{2}i$の三点で与えられる.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6cm]{./pic.png}
+    \caption{Dの領域}
+\end{figure}
+\verb|--------------------|\\
+以上の出力結果より,数式環境を用いることで,領域の定義や複雑な計算過程が意図通りに数式として出力されていることが確認できた.
+また,figure環境を用いることで図表が挿入された形で表示された.
+
+\section{考察}
+本演習では，基本的に想定通りの実行結果を得ることができた.一方で表の作成においてキャプションの位置や配置指定（[h]など）が意図通りに反映されない問題に直面した. 
+そこで当初,tabular環境を用いることで,解決しようとしたが,\verb|\caption|を入力したところエラーになってしまった.
+調査の結果,tabular環境はあくまで表の「格子」を作る機能であり,キャプションや配置場所を管理するのはその外側にあるtable環境（浮動体）の役割であることが分かった. 
+このことから,LaTeXにおいては「中身」と「配置枠」の役割分担が明確になされており,適切な環境の入れ子構造を意識する必要があると考察できる.また,この構造を理解することは,図（figure環境）を扱う際にも応用可能であると考えられる.
+
+\begin{thebibliography}{9}
+\bibitem{ref1} 情報・エレクトロニクス学科（情報・知能コース）編，「\LaTeX{}による文書作成入門」，\url{https://ecsylms1.kj.yamagata-u.ac.jp/webclass/course.php/2452513/manage/?acs_=7fdb2584}, 2025.
+\end{thebibliography}
+
+\end{document}  
